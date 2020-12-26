@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <v-app>
+    <v-main></v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import { ApiService } from "./api.service";
+import { getCurrentPosition } from "./utils";
 export default {
   name: "App",
-  components: {
-    HelloWorld
-  }
+
+  components: {},
+
+  data: () => ({
+    location: null,
+    locationWeatherInfo: null,
+  }),
+  methods: {
+    async getCurrentLocation() {
+      const currentPosition = await getCurrentPosition();
+
+      const { latitude, longitude } = currentPosition
+        ? currentPosition.coords
+        : { latitude: 0, longitude: 0 };
+
+      this.location = (
+        await ApiService.searchLocation(null, `${latitude},${longitude}`)
+      )[0];
+    },
+    async getLocationWeatherInfo() {
+      this.locationWeatherInfo = await ApiService.getLocation(
+        this.location.woeid,
+      );
+    },
+  },
+  async created() {
+    await this.getCurrentLocation();
+    this.getLocationWeatherInfo();
+  },
 };
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
