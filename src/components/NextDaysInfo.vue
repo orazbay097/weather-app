@@ -19,7 +19,7 @@
           width="56.44px"
           height="62px"
         />
-        <div class="mt-8">
+        <div class="mt-5">
           <span class="max temp"
             >{{ processTemperature(info.max_temp)
             }}<span class="unit">{{ $global.unit }}</span></span

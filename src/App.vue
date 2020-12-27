@@ -1,10 +1,14 @@
 <template>
   <v-app>
-    <AppProgress :progress="initialLoading" />
+    <AppProgress :progress="loading" />
     <transition name="fade">
-      <v-row v-if="!initialLoading" dense style="margin:0;">
+      <v-row v-if="!loading" dense style="margin:0;">
         <v-col cols="12" md="4" class="pa-0">
-          <TodayInfo :locationWeatherInfo="locationWeatherInfo" />
+          <TodayInfo
+            :locationWeatherInfo="locationWeatherInfo"
+            @selected="handleSelected"
+            @gpsClicked="init"
+          />
         </v-col>
         <v-col
           cols="12"
@@ -54,9 +58,21 @@ export default {
   data: () => ({
     location: null,
     locationWeatherInfo: null,
-    initialLoading: false,
+    loading: false,
   }),
   methods: {
+    async handleSelected(location) {
+      this.location = location;
+      this.loading = true;
+      await this.getLocationWeatherInfo();
+      this.loading = false;
+    },
+    async init() {
+      this.loading = true;
+      await this.getCurrentLocation();
+      await this.getLocationWeatherInfo();
+      this.loading = false;
+    },
     async getCurrentLocation() {
       const currentPosition = await getCurrentPosition();
 
@@ -75,10 +91,7 @@ export default {
     },
   },
   async created() {
-    this.initialLoading = true;
-    await this.getCurrentLocation();
-    await this.getLocationWeatherInfo();
-    this.initialLoading = false;
+    this.init();
   },
 };
 </script>
@@ -86,9 +99,11 @@ export default {
 .v-application {
   font-family: "Raleway", sans-serif;
 }
-.fade-enter-active,
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
 .fade-leave-active {
-  transition: opacity 0.7s;
+  transition: opacity 0s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

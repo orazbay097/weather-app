@@ -5,7 +5,7 @@
       <v-col cols="12" md="6">
         <v-card color="primary">
           <p class="label">Wind status</p>
-          <p class="indicator">
+          <p class="indicator mb-5">
             <span class="amount">{{ Math.ceil(todayInfo.wind_speed) }}</span>
             <span class="unit">mph</span>
           </p>
@@ -20,7 +20,7 @@
       <v-col cols="12" md="6">
         <v-card color="primary">
           <p class="label">Humidity</p>
-          <p class="indicator">
+          <p class="indicator mb-5">
             <span class="amount">{{ Math.ceil(todayInfo.humidity) }}</span>
             <span class="unit">%</span>
           </p>
@@ -45,7 +45,7 @@
       <v-col cols="12" md="6">
         <v-card color="primary">
           <p class="label">Visibility</p>
-          <p class="indicator">
+          <p class="indicator mb-0">
             <span class="amount">{{ Math.ceil(todayInfo.visibility) }}</span>
             <span class="unit">miles</span>
           </p>
@@ -54,7 +54,7 @@
       <v-col cols="12" md="6">
         <v-card color="primary">
           <p class="label">Air Pressure</p>
-          <p class="indicator">
+          <p class="indicator mb-0">
             <span class="amount">{{ Math.ceil(todayInfo.air_pressure) }}</span>
             <span class="unit">mb</span>
           </p>
@@ -81,7 +81,7 @@ export default {
   }
   .v-card {
     height: 100%;
-    padding: 22px;
+    padding: 22px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,7 +94,6 @@ export default {
     .indicator {
       font-style: normal;
       color: #e7e7eb;
-      margin-bottom: 18px;
       .amount {
         font-weight: 700;
         font-size: 64px;
