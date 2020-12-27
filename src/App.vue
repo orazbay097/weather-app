@@ -20,6 +20,10 @@
                   locationWeatherInfo.consolidated_weather.slice(1)
                 "
               />
+              <TodayHighlights
+                class="mt-10"
+                :todayInfo="locationWeatherInfo.consolidated_weather[0]"
+              />
             </v-main>
           </div>
           <v-footer id="footer">Orazbay @ DevChallenges.io</v-footer>
@@ -31,10 +35,13 @@
 <script>
 import { ApiService } from "./api.service";
 import { getCurrentPosition } from "./utils";
+
 import TodayInfo from "./components/TodayInfo";
 import AppProgress from "./components/AppProgress";
 import UnitSwitcher from "./components/UnitSwitcher";
 import NextDaysInfo from "./components/NextDaysInfo";
+import TodayHighlights from "./components/TodayHighlights";
+
 export default {
   name: "App",
   components: {
@@ -42,6 +49,7 @@ export default {
     AppProgress,
     UnitSwitcher,
     NextDaysInfo,
+    TodayHighlights,
   },
   data: () => ({
     location: null,
