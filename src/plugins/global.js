@@ -1,3 +1,5 @@
+import { getImageFromAssets } from "../utils";
+
 export default {
   install(Vue) {
     Vue.prototype.$global = Vue.observable({ unit: "℃" });
@@ -8,6 +10,14 @@ export default {
     };
     Vue.prototype.setUnit = unit => {
       Vue.prototype.$global.unit = unit;
+    };
+
+    Vue.prototype.getWeatherStateImage = weatherState => {
+      try {
+        return getImageFromAssets(`${weatherState.replace(" ", "")}.png`);
+      } catch (e) {
+        return getImageFromAssets("Clear.png");
+      }
     };
   },
 };

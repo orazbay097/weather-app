@@ -1,11 +1,12 @@
 <template>
-  <div class="unit unit-switcher">
+  <div class="unit unit-switcher d-inline-block">
     <v-btn
       :light="isActive('℃')"
       @click="setUnit('℃')"
       small
       :color="getColor('℃')"
       fab
+      class="mr-3"
     >
       ℃
     </v-btn>

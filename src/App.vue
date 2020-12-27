@@ -6,10 +6,23 @@
         <v-col cols="12" md="4" class="pa-0">
           <TodayInfo :locationWeatherInfo="locationWeatherInfo" />
         </v-col>
-        <v-col cols="12" md="8" class="pa-0">
-          <v-main>
-            <UnitSwitcher />
-          </v-main>
+        <v-col
+          cols="12"
+          md="8"
+          class="pa-0 d-flex flex-column"
+          style="background:#100E1D"
+        >
+          <div style="position:relative;height:100%;" class="px-3">
+            <v-main class="pt-10 mx-auto" style="max-width:704px">
+              <UnitSwitcher class="float-right mb-10" />
+              <NextDaysInfo
+                :nextDaysInfo="
+                  locationWeatherInfo.consolidated_weather.slice(1)
+                "
+              />
+            </v-main>
+          </div>
+          <v-footer id="footer">Orazbay @ DevChallenges.io</v-footer>
         </v-col>
       </v-row>
     </transition>
@@ -21,12 +34,14 @@ import { getCurrentPosition } from "./utils";
 import TodayInfo from "./components/TodayInfo";
 import AppProgress from "./components/AppProgress";
 import UnitSwitcher from "./components/UnitSwitcher";
+import NextDaysInfo from "./components/NextDaysInfo";
 export default {
   name: "App",
   components: {
     TodayInfo,
     AppProgress,
     UnitSwitcher,
+    NextDaysInfo,
   },
   data: () => ({
     location: null,
@@ -72,5 +87,19 @@ export default {
 }
 .unit {
   font-family: -webkit-pictograph;
+}
+#footer {
+  padding: 50px 0px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  background: none;
+  color: #616475;
+  justify-content: center;
+}
+.next-days-info {
+  clear: both;
 }
 </style>

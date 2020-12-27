@@ -1,7 +1,7 @@
 <template>
   <div class="today-info">
     <div class="bg"></div>
-    <div class="mt-10 mx-5">
+    <div class="pt-3 pt-sm-10 mx-5">
       <v-btn color="#6E707A">Seach for places</v-btn>
       <v-btn class="float-right" small color="#6E707A" fab
         ><v-icon>gps_fixed</v-icon></v-btn
@@ -9,7 +9,11 @@
     </div>
 
     <div class="top half d-flex align-center justify-center">
-      <img v-if="locationWeatherInfo" :src="weatherStateImage" width="45%" />
+      <img
+        v-if="locationWeatherInfo"
+        :src="getWeatherStateImage(weatherState)"
+        width="45%"
+      />
     </div>
     <div
       class="bottom half d-flex flex-column align-center justify-space-between"
@@ -23,12 +27,12 @@
       <span class="weather-state-name py-3 px-1">
         {{ weatherState }}
       </span>
-      <div class="footer d-inline-block py-10 px-1">
-        <p class="mb-8">
+      <div class="footer d-inline-block py-5 py-sm-10 px-1">
+        <p class="mb-4 mb-sm-8">
           Today<span class="mx-4">•</span
           >{{ todayWeather.applicable_date | formatDate }}
         </p>
-        <p class="mb-3">
+        <p class="mb-1 mb-sm-3">
           <v-icon color="#88869d">location_on</v-icon
           >{{ locationWeatherInfo.title }}
         </p>
@@ -38,7 +42,6 @@
 </template>
 
 <script>
-import { getImageFromAssets } from "../utils";
 export default {
   name: "TodayInfo",
   props: ["locationWeatherInfo"],
@@ -49,21 +52,20 @@ export default {
     weatherState() {
       return this.todayWeather.weather_state_name;
     },
-    weatherStateImage() {
-      return getImageFromAssets(`${this.weatherState.replace(" ", "")}.png`);
-    },
   },
 };
 </script>
 
 <style lang="scss">
+@import "~vuetify/src/styles/styles.sass";
 .today-info {
   height: 100vh;
   top: 0px;
   max-height: calc(100% - 0px);
   transform: translateX(0%);
   background-color: var(--v-primary-base);
-  overflow: auto;
+  overflow: hidden !important;
+  position: sticky;
   .v-btn {
     z-index: 1;
   }
@@ -86,8 +88,7 @@ export default {
     right: 0;
   }
   .top {
-    top: 78px;
-    // position: relative;
+    top: 80px;
     bottom: 55%;
   }
   .bottom {
@@ -117,6 +118,15 @@ export default {
       line-height: 21px;
       color: #88869d;
       text-align: center;
+    }
+  }
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    .top {
+      top: 52px;
+      bottom: 65%;
+    }
+    .bottom {
+      height: 65%;
     }
   }
 }
