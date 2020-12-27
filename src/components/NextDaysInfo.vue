@@ -1,9 +1,13 @@
 <template>
-  <v-row dense class="next-days-info" justify-md="space-between">
-    <v-col v-for="(info, i) in nextDaysInfo" :key="i" cols="auto">
+  <v-row
+    :dense="this.$vuetify.breakpoint.mdAndUp"
+    class="next-days-info"
+    justify-md="space-between"
+  >
+    <v-col v-for="(info, i) in nextDaysInfo" :key="i" cols="6" sm="4" md="auto">
       <v-card
         min-width="120"
-        class="pa-4 d-flex flex-column align-center"
+        class="pa-4 d-flex flex-column align-center mb-8"
         color="primary"
       >
         <p class="label">

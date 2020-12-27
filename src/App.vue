@@ -12,7 +12,7 @@
           class="pa-0 d-flex flex-column"
           style="background:#100E1D"
         >
-          <div style="position:relative;height:100%;" class="px-3">
+          <div style="position:relative;height:100%;" class="px-7">
             <v-main class="pt-10 mx-auto" style="max-width:704px">
               <UnitSwitcher class="float-right mb-10" />
               <NextDaysInfo
