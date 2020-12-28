@@ -1,17 +1,18 @@
 <template>
   <v-overlay z-index="201" :value="progress">
-    <v-dialog v-model="progress" hide-overlay persistent width="150">
-      <v-card
-        style="height: 150px;border-radius: 50%;"
-        color="primary"
-        class="d-flex align-center justify-center"
-      >
-        <v-progress-circular
+    <v-dialog v-model="progress" hide-overlay persistent width="400">
+      <v-card style="text-align:center;" color="primary">
+        <v-progress-linear
           class="ma-0"
-          size="100"
+          height="20"
           indeterminate
-          color="white"
-        ></v-progress-circular>
+          color="#3C47E9"
+        ></v-progress-linear>
+        <p
+          class="ma-0"
+          style="font-size: 20px; padding: 20px"
+          v-html="waitText"
+        ></p>
       </v-card>
     </v-dialog>
   </v-overlay>
@@ -20,7 +21,7 @@
 <script>
 export default {
   name: "AppProgress",
-  props: ["progress"],
+  props: ["progress", "waitText"],
 };
 </script>
 

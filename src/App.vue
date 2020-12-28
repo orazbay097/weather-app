@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <AppProgress :progress="loading" />
+    <AppProgress :progress="loading" :waitText="loadingText" />
     <transition name="fade">
       <v-row v-if="!loading" dense style="margin:0;">
         <v-col cols="12" md="4" class="pa-0">
@@ -59,6 +59,7 @@ export default {
     location: null,
     locationWeatherInfo: null,
     loading: false,
+    loadingText: "",
   }),
   methods: {
     async handleSelected(location) {
@@ -74,17 +75,26 @@ export default {
       this.loading = false;
     },
     async getCurrentLocation() {
+      this.loadingText = `Getting your location`;
+
       const currentPosition = await getCurrentPosition();
 
       const { latitude, longitude } = currentPosition
         ? currentPosition.coords
         : { latitude: 0, longitude: 0 };
 
-      this.location = (
-        await ApiService.searchLocation(null, `${latitude},${longitude}`)
-      )[0];
+      const res = await ApiService.searchLocation(
+        null,
+        `${latitude},${longitude}`,
+      );
+
+      if (!res) return;
+
+      this.location = res[0];
     },
     async getLocationWeatherInfo() {
+      if (!this.location) return;
+      this.loadingText = `Getting the weather forecast of <b class="nowrap">${this.location.title}</b>`;
       this.locationWeatherInfo = await ApiService.getLocation(
         this.location.woeid,
       );
@@ -124,5 +134,8 @@ export default {
 }
 .next-days-info {
   clear: both;
+}
+.nowrap {
+  white-space: nowrap;
 }
 </style>

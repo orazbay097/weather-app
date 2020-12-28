@@ -3,22 +3,23 @@ import axios from "axios";
 axios.defaults.baseURL =
   "https://cors-anywhere.herokuapp.com/metaweather.com/api/";
 
+axios.interceptors.response.use(
+  res => res,
+  async error => {
+    await alert("Some error occured. Please, reload the page.");
+    location.reload();
+    return Promise.reject(error);
+  },
+);
+
 const ApiService = {
   async getLocation(woeid) {
-    try {
-      return (await axios.get(`location/${woeid}`)).data;
-    } catch (e) {
-      console.error(e);
-    }
+    return (await axios.get(`location/${woeid}`)).data;
   },
   async searchLocation(query, lattlong) {
-    try {
-      return (
-        await axios.get(`location/search/`, { params: { query, lattlong } })
-      ).data;
-    } catch (e) {
-      console.error(e);
-    }
+    return (
+      await axios.get(`location/search/`, { params: { query, lattlong } })
+    ).data;
   },
 };
 
