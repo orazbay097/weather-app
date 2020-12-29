@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/UmToa6Dwl4mR2kFiiApC">
       Solution
     </a>
     <span> | </span>
@@ -31,7 +31,6 @@
 - [Features](#features)
 - [How to use](#how-to-use)
 - [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
 
 <!-- OVERVIEW -->
 
@@ -39,25 +38,31 @@
 
 ![screenshot](./screenshots/main.jpg)
 
+Simple appliction to get weather forecast.
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
 
 ### Built With
 
-<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
-
 - [Vue.js](https://vuejs.org/)
+- [Vuetify](https://vuetifyjs.com/)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
+- I can see city weather as default, preferably my current location
+- I can search for city
+- I can see weather of today and the next 5 days
+- I can see the date and location of the weather
+- I can see according to image for each type of weather
+- I can see the min and max degree each day
+- I can see wind status and wind direction
+- I can see humidity percentage
+- I can see visibility indicator
+- I can see air pressure number
+- I can request my current location weather
+- I can convert temperature in Celcius to Fahrenheit and vice versa
 
 ## How To Use
 
@@ -67,7 +72,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/orazbay097/weather-app
 
 # Install dependencies
 $ npm install
@@ -76,16 +81,7 @@ $ npm install
 $ npm run serve
 ```
 
-## Acknowledgements
-
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
-
-- [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
+- E-mail [orazbay.n.n@gmail.com](mailto:orazbay.n.n@gmail.com)
+- GitHub [@orazbay097](https://github.com/orazbay097)
