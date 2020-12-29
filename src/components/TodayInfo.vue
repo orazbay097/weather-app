@@ -40,7 +40,7 @@
               }}</span>
               <span class="unit">{{ $global.unit }}</span>
             </span>
-            <span class="weather-state-name py-3 px-1">
+            <span class="weather-state-name py-sm-3 px-1">
               {{ weatherState }}
             </span>
             <div class="footer d-inline-block py-5 py-sm-10 px-1">
@@ -155,12 +155,13 @@ export default {
     }
   }
   @media #{map-get($display-breakpoints, 'xs-only')} {
+    height: 85vh;
     .top {
-      top: 52px;
-      bottom: 65%;
+      top: 62px;
+      bottom: 70%;
     }
     .bottom {
-      height: 65%;
+      height: 70%;
     }
   }
 }

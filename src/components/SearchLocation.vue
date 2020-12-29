@@ -4,6 +4,7 @@
       ><v-icon @click="$emit('close')">close</v-icon></v-btn
     >
     <v-form
+      style="min-height:66px;"
       class="d-flex"
       ref="form"
       @submit="handleSubmit"
@@ -24,7 +25,7 @@
     <div class="list mx-n5 px-5">
       <div
         @click="$emit('selected', location)"
-        class="item"
+        class="item py-3 py-md-6 px-3"
         v-for="(location, i) in locations"
         :key="i"
       >
@@ -70,7 +71,6 @@ export default {
     overflow: auto;
     .item {
       cursor: pointer;
-      padding: 23px 12px;
       i {
         display: none;
       }

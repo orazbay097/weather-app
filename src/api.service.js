@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL =
-  "https://cors-anywhere.herokuapp.com/metaweather.com/api/";
+  "https://orazbay-ualesh-cors.herokuapp.com/metaweather.com/api/";
 
 axios.interceptors.response.use(
   res => res,
