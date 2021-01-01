@@ -10,7 +10,10 @@
             <span class="unit">mph</span>
           </p>
           <p>
-            <v-icon small>navigation</v-icon
+            <v-icon
+              small
+              :style="`transform: rotate(${todayInfo.wind_direction}deg);`"
+              >navigation</v-icon
             ><span class="direction">{{
               todayInfo.wind_direction_compass
             }}</span>
@@ -111,7 +114,6 @@ export default {
       background: #616375;
       border-radius: 50%;
       padding: 5px;
-      transform: rotate(-150deg);
     }
     .direction {
       font-weight: 500;
