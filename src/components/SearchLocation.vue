@@ -67,6 +67,8 @@ export default {
 <style lang="scss">
 .search-location {
   max-height: 100%;
+  position: absolute;
+  z-index: 2;
   .list {
     overflow: auto;
     .item {

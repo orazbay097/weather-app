@@ -1,6 +1,6 @@
 export const getCurrentPosition = () =>
   new Promise(resolve => {
-    if (!navigator.geolocation) return null;
+    if (!navigator.geolocation) return resolve(null);
     navigator.geolocation.getCurrentPosition(
       position => resolve(position),
       () => resolve(null),

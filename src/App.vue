@@ -4,7 +4,7 @@
     <transition name="fade">
       <v-row v-if="!loading" dense style="margin:0;">
         <v-col cols="12" md="4" class="pa-0">
-          <TodayInfo
+          <NavBar
             :locationWeatherInfo="locationWeatherInfo"
             @selected="handleSelected"
             @gpsClicked="init"
@@ -40,7 +40,7 @@
 import { ApiService } from "./api.service";
 import { getCurrentPosition } from "./utils";
 
-import TodayInfo from "./components/TodayInfo";
+import NavBar from "./components/NavBar";
 import AppProgress from "./components/AppProgress";
 import UnitSwitcher from "./components/UnitSwitcher";
 import NextDaysInfo from "./components/NextDaysInfo";
@@ -49,7 +49,7 @@ import TodayHighlights from "./components/TodayHighlights";
 export default {
   name: "App",
   components: {
-    TodayInfo,
+    NavBar,
     AppProgress,
     UnitSwitcher,
     NextDaysInfo,
@@ -108,15 +108,6 @@ export default {
 <style lang="scss">
 .v-application {
   font-family: "Raleway", sans-serif;
-}
-.fade-enter-active {
-  transition: opacity 0.5s;
-}
-.fade-leave-active {
-  transition: opacity 0s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 .unit {
   font-family: -webkit-pictograph;
